@@ -5,8 +5,9 @@ LETTERS_UPPERS = string.ascii_uppercase
 NUMBERS = string.digits
 PUNCTUATION = string.punctuation
 
+
 def fetch_string_constant(choice_list):
-    '''
+    """
     Returns a string constant based on users choice_list.
     string constant can either be digits, letters, punctuation or
     combination of them.
@@ -17,7 +18,7 @@ def fetch_string_constant(choice_list):
             True to add letters to constant False otherwise
         2 item ---> punctuation
             True to add punctuation to constant False otherwise
-    '''
+    """
     string_constant = ''
 
     string_constant += NUMBERS if choice_list[0] else ''

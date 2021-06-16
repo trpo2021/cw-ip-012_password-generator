@@ -1,5 +1,5 @@
 def get_help_text():
-    print( """
+    print("""
         Description of options:
 
         -Length password, --password length [True/False].

@@ -1,8 +1,9 @@
 from src.Modules import module_fetch_string_constant
 import random
 
+
 def password_generator(cbl, length=8):
-    '''
+    """
     Generates a random password having the specified length
     :length -> length of password to be generated. Defaults to 8
         if nothing is specified
@@ -17,7 +18,7 @@ def password_generator(cbl, length=8):
         3 item ---> punctuation
              True to add punctuation to constant False otherwise
     :returns string <class 'str'>
-    '''
+    """
     # create alphanumerical by fetching string constant
     printable = module_fetch_string_constant.fetch_string_constant(cbl)
 

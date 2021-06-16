@@ -1,16 +1,17 @@
-def get_password_length():
-    '''
+def get_password_length(user_input):
+    """
     Retrieves the length of a password
     :returns number <class 'int'>
-    '''
-    while True:
-        length = input("How long do you want your password: ")
-        try:
-            temp_lenght = int(length)
-        except ValueError:
-            print("Length must be non-negative real number")
-        except TypeError:
-            print("Length must be non-negative real number")
-        else:
-            break
+    """
+    try:
+        length = int(user_input)
+    except ValueError:
+        print("Length must be non-negative real number")
+        print("Length set by 10")
+        length = 10
+    except TypeError:
+        print("Length must be non-negative real number")
+        print("Length set by 10")
+        length = 10
+
     return int(length)

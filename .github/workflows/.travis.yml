@@ -1,11 +1,28 @@
- language: python
+ name: Build and deploy Python package
 
- python:
-    -3.6
-    -3.7
+on:
+  release:
+    types: [created]
 
-git:
-  lfc_skip_smudge: true
+jobs:
+  deploy:
 
-script:
-    - cd srs/Main/main.py && python test_module_get_pass_len.py
+    runs-on: debian-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    - name: Setup all dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install setuptools wheel twine
+    - name: Build package and publish PYPI
+      env:
+        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      run: |
+        python setup.py sdist bdist_wheel
+        twine upload dist/*
